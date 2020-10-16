@@ -1,0 +1,130 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema ico_membership
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema ico_membership
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `ico_membership` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
+USE `ico_membership` ;
+
+-- -----------------------------------------------------
+-- Table `ico_membership`.`acceptance_type`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ico_membership`.`acceptance_type` (
+  `id_acceptance` INT NOT NULL AUTO_INCREMENT,
+  `name_acceptance` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_acceptance`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 10
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `ico_membership`.`coffee_agreements`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ico_membership`.`coffee_agreements` (
+  `id_agreements` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ica_name` VARCHAR(45) NOT NULL,
+  `provisional_start` DATE NOT NULL,
+  `definitive_start` DATE NULL DEFAULT NULL,
+  `ica_end` DATE NULL DEFAULT NULL,
+  `text_url` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_agreements`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `ico_membership`.`country_regions`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ico_membership`.`country_regions` (
+  `idcountry_regions` INT NOT NULL AUTO_INCREMENT,
+  `region_name` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idcountry_regions`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `ico_membership`.`countries`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ico_membership`.`countries` (
+  `id_countries` INT NOT NULL,
+  `country_name` VARCHAR(45) NOT NULL,
+  `country_regions` INT NOT NULL,
+  `iso_code` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_countries`),
+  INDEX `fk_member_countries_country_regions_idx` (`country_regions` ASC) VISIBLE,
+  CONSTRAINT `fk_member_countries_country_regions`
+    FOREIGN KEY (`country_regions`)
+    REFERENCES `ico_membership`.`country_regions` (`idcountry_regions`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `ico_membership`.`member_type`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ico_membership`.`member_type` (
+  `idmember_type` INT NOT NULL AUTO_INCREMENT,
+  `mem_type_name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idmember_type`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+-- -----------------------------------------------------
+-- Table `ico_membership`.`membership_history`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ico_membership`.`membership_history` (
+  `membership_id` INT NOT NULL AUTO_INCREMENT,
+  `agreement_id` INT UNSIGNED NOT NULL,
+  `country_id` INT NOT NULL,
+  `member_type` INT NULL DEFAULT NULL,
+  `mem_start` DATE NULL DEFAULT NULL,
+  `mem_end` DATE NULL DEFAULT NULL,
+  `mem_step` VARCHAR(45) NULL DEFAULT NULL,
+  `notes` VARCHAR(300) NULL DEFAULT NULL,
+  PRIMARY KEY (`membership_id`),
+  INDEX `agreement_id` (`agreement_id` ASC) VISIBLE,
+  INDEX `country_id` (`country_id` ASC) VISIBLE,
+  INDEX `fk_member_history_type` (`member_type` ASC) VISIBLE,
+  CONSTRAINT `membership_history_ibfk_1`
+    FOREIGN KEY (`agreement_id`)
+    REFERENCES `ico_membership`.`coffee_agreements` (`id_agreements`),
+  CONSTRAINT `membership_history_ibfk_2`
+    FOREIGN KEY (`country_id`)
+    REFERENCES `ico_membership`.`countries` (`id_countries`),
+  CONSTRAINT `membership_history_ibfk_3`
+    FOREIGN KEY (`member_type`)
+    REFERENCES `ico_membership`.`member_type` (`idmember_type`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 1288
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
