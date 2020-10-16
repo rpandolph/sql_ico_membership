@@ -1,0 +1,239 @@
+id_countries,country_name,country_regions,iso_code
+1,"Bolivia (Plurinational State of)",7,"BO"
+2,Brazil,7,"BR"
+3,Colombia,7,"CO"
+4,"Democratic Republic of Congo",1,"CD"
+5,"Costa Rica",4,"CR"
+6,Cuba,4,"CU"
+7,"Dominican Republic",4,"DO"
+8,Ecuador,7,"EC"
+9,"El Salvador",4,"SV"
+10,Ethiopia,1,"ET"
+11,Guatemala,4,"GT"
+12,Haiti,4,"HT"
+13,Honduras,4,"HN"
+14,India,2,"IN"
+15,Indonesia,2,"ID"
+16,Mexico,4,"MX"
+17,Nicaragua,4,"NI"
+18,Nigeria,1,"NG"
+19,Cameroon,1,"CM"
+20,"Central African Republic",1,"CF"
+21,Congo,1,"CG"
+22,Benin,1,"BJ"
+23,Gabon,1,"GA"
+24,"Cote d'Ivoire",1,"CI"
+25,Madagascar,1,"MG"
+26,Togo,1,"TG"
+27,Burundi,1,"BI"
+28,Rwanda,1,"RW"
+29,Panama,4,"PA"
+30,Peru,7,"PE"
+31,Portugal,5,"PT"
+32,"Sierra Leone",1,"SL"
+33,Tanzania,1,"TZ"
+34,"Trinidad & Tobago",4,"TT"
+35,Uganda,1,"UG"
+36,Venezuela,7,"VE"
+37,Kenya,1,"KE"
+38,Ghana,1,"GH"
+39,Zimbabwe,1,"ZW"
+40,Germany,5,"DE"
+41,Estonia,5,"EE"
+42,Latvia,5,"LV"
+44,Lithuania,5,"LT"
+45,Eritrea,1,"ER"
+46,Belgium,5,"BE"
+49,Guyana,7,"GY"
+50,Argentina,7,"AR"
+51,Australia,2,"AU"
+52,Austria,5,"AT"
+54,Canada,6,"CA"
+55,Chile,7,"CL"
+56,Denmark,5,"DK"
+58,France,5,"FR"
+59,Italy,5,"IT"
+60,Japan,2,"JP"
+61,Netherlands,5,"NL"
+62,Norway,5,"NO"
+63,Spain,5,"ES"
+64,Sweden,5,"SE"
+65,Switzerland,5,"CH"
+66,Tunisia,1,"TN"
+67,USSR,5,"SU"
+68,"United Kingdom",5,"GB"
+70,"New Zealand",2,"NZ"
+71,Finland,5,"FI"
+73,Afghanistan,2,AF
+74,Albania,5,AL
+75,Algeria,1,DZ
+76,Bahrain,2,"BH"
+77,Lesotho,1,"LS"
+78,Botswana,1,"BW"
+79,Bulgaria,5,"BG"
+80,Myanmar,2,"MM"
+81,Belarus,5,"BY"
+82,Cambodia,2,"KH"
+83,"Sri Lanka",2,"LK"
+84,Chad,1,"TD"
+85,"China (Mainland)",2,"CN"
+86,Cyprus,5,"CY"
+89,Taiwan,2,"TW"
+90,Gibraltar,5,"GI"
+91,Greece,5,"GR"
+92,Guinea,1,"GN"
+93,"Hong Kong",2,"HK"
+94,Hungary,5,"HU"
+95,Iceland,5,"IS"
+96,"Iran (Islamic Republic of)",2,"IR"
+97,Iraq,2,"IQ"
+98,Ireland,5,"IE"
+99,Israel,2,"IL"
+100,Jamaica,4,"JM"
+101,Jordan,2,"JO"
+102,"Democratic People's Republic of Korea",2,"KP"
+103,"Republic of Korea",2,"KR"
+104,Kuwait,2,"KW"
+105,"Lao People's Democratic Republic",2,"LA"
+106,Lebanon,2,"LB"
+107,Liberia,1,"LR"
+108,Libya,1,"LY"
+109,Malawi,1,"MW"
+110,Malaysia,2,"MY"
+111,Mali,1,"ML"
+112,Malta,5,"MT"
+113,Mauritania,1,"MR"
+114,Mongolia,2,"MN"
+115,Morocco,1,"MA"
+116,Oman,2,"OM"
+117,Nepal,2,"NP"
+118,Vanuatu,2,"VU"
+119,Niger,1,"NE"
+120,"United Arab Emirates",2,"AE"
+121,Pakistan,2,"PK"
+122,Paraguay,7,"PY"
+123,Philippines,2,"PH"
+124,Poland,5,"PL"
+125,"Puerto Rico",3,"PR"
+126,Qatar,2,"QA"
+127,"Russian Federation",5,"RU"
+128,Romania,5,"RO"
+129,"Saint Pierre and Miquelon",6,"PM"
+130,"Saudi Arabia",2,"SA"
+131,Senegal,1,"SN"
+132,Singapore,2,"SG"
+133,Somalia,1,"SO"
+134,"South Africa",1,"ZA"
+135,Namibia,1,"NA"
+136,Sudan,1,"SD"
+137,Eswatini,1,"SZ"
+138,"Syrian Arab Republic",2,"SY"
+139,Suriname,7,"SR"
+140,Thailand,2,"TH"
+141,Turkey,2,"TR"
+142,Egypt,1,"EG"
+143,"Burkina Faso",1,"BF"
+144,Uruguay,7,"UY"
+145,"Viet Nam",2,"VN"
+146,Yemen,2,"YE"
+149,Zambia,1,"ZM"
+155,"Western Sahara",1,"EH"
+158,Angola,1,AO
+159,Timor-Leste,2,"TL"
+160,Mozambique,1,"MZ"
+161,"Sao Tome and Principe",1,"ST"
+162,"Cabo Verde",1,"CV"
+163,Guinea-Bissau,1,"GW"
+164,Macao,2,"MO"
+166,"Papua New Guinea",2,"PG"
+167,"Equatorial Guinea",1,"GQ"
+168,"French Guiana",7,"GF"
+169,Guadeloupe,3,"GP"
+170,Martinique,3,"MQ"
+171,Reunion,1,"RE"
+172,Comoros,1,"KM"
+173,"New Caledonia",2,"NC"
+175,Djibouti,1,"DJ"
+176,"Cook Islands",2,"CK"
+177,Niue,2,"NU"
+178,Tokelau,2,"TK"
+179,Ukraine,5,"UA"
+180,"South Sudan",1,"SS"
+182,"Marshall Islands",2,"MH"
+183,"Micronesia (Federated States of)",2,"FM"
+186,Tuvalu,2,"TV"
+190,"Bonaire (Sint Eustatius and Saba)",4,"BQ"
+191,Curacao,4,"CW"
+192,"State of Palestine",2,"PS"
+194,Samoa,2,"WS"
+195,Belize,4,"BZ"
+196,Gambia,1,"GM"
+197,Aruba,3,"AW"
+198,Pitcairn,2,"PN"
+199,Liechtenstein,5,"LI"
+201,"Faroe Islands",5,"FO"
+202,Greenland,6,"GL"
+203,Andorra,5,"AD"
+204,"Northern Mariana Islands",2,"MP"
+205,Monaco,5,"MC"
+206,"San Marino",5,"SM"
+207,"Holy See",5,"VA"
+208,Mauritius,1,"MU"
+209,"Saint Helena",1,"SH"
+210,Seychelles,1,"SC"
+211,Georgia,5,"GE"
+212,Bhutan,2,"BT"
+213,"Brunei Darussalam",2,"BN"
+214,Maldives,2,"MV"
+216,Bahamas,3,"BS"
+217,Barbados,3,"BB"
+218,"Cayman Islands",3,"KY"
+220,"Falkland Islands (Malvinas)",7,"FK"
+221,Anguilla,3,"AI"
+222,"Antigua and Barbuda",3,"AG"
+223,"Cocos (Keeling) Islands",2,"CC"
+224,Montserrat,3,"MS"
+225,"Svalbard and Jan Mayen Islands",5,"SJ"
+226,"Saint Kitts and Nevis",3,"KN"
+227,"British Virgin Islands",3,"VG"
+228,"United States Virgin Islands",3,"VI"
+229,"Turks & Caicos Islands",3,"TC"
+230,Dominica,3,"DM"
+231,Grenada,3,"GD"
+232,"Saint Lucia",3,"LC"
+233,"Saint Vincent & the Grenadines",3,"VC"
+234,American_Samoa,2,AS
+235,"Christmas Islands",2,"CX"
+236,Fiji,2,"FJ"
+237,Kiribati,2,"KI"
+238,Guam,2,"GU"
+239,Nauru,2,"NR"
+240,"Norfolk Island",2,"NF"
+242,"Solomon Islands",2,"SB"
+243,Tonga,2,"TO"
+244,Palau,2,"PW"
+245,"Wallis & Futuna Islands",2,"WF"
+246,Bermuda,4,"BM"
+250,"European Union",5,"QV"
+251,Luxembourg,5,"LU"
+252,Mayotte,2,"YT"
+254,Bangladesh,2,"BD"
+265,"Republic of Moldova",5,"MD"
+266,Armenia,2,"AM"
+276,Azerbaijan,2,"AZ"
+279,Kazakhstan,2,"KZ"
+282,Uzbekistan,2,"UZ"
+283,Kyrgyzstan,2,"KG"
+285,Tajikistan,2,"TJ"
+286,Turkmenistan,2,"TM"
+287,"Bosnia and Herzegovina",5,"BA"
+288,Croatia,5,"HR"
+289,"North Macedonia",5,"MK"
+290,Montenegro,5,"ME"
+291,Serbia,5,"RS"
+292,Slovenia,5,"SI"
+297,Melilla,1,"XL"
+298,"Kosovo (Rep. of)",5,"XK"
+299,Czechia,5,"CZ"
+300,Slovakia,5,"SK"
+369,"United States of America",6,"US"
