@@ -1,3 +1,6 @@
+--These are a series of queries to get the information for this website page: https://www.ico.org/members_e.asp?section=About_Us
+--These queries the number of countries by membership type (exporting or importing) as well as the list).
+
 --Get list of all current exporting members for website	
 Select  country_name
 from tbl_countries as c
