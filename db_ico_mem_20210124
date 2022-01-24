@@ -1,0 +1,1112 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.3
+-- Dumped by pg_dump version 13.3
+
+-- Started on 2022-01-24 13:04:35
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 202 (class 1259 OID 24603)
+-- Name: tbl_accept_type; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbl_accept_type (
+    id_accept_type integer NOT NULL,
+    name_acceptance character varying(250) NOT NULL
+);
+
+
+ALTER TABLE public.tbl_accept_type OWNER TO postgres;
+
+--
+-- TOC entry 3033 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: TABLE tbl_accept_type; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE public.tbl_accept_type IS 'This table refers to the different levels of acceptance by members to a particular coffee agreement';
+
+
+--
+-- TOC entry 203 (class 1259 OID 24608)
+-- Name: tbl_coffee_agreements; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbl_coffee_agreements (
+    id_agreements integer NOT NULL,
+    ica_name character varying(50) NOT NULL,
+    provisional_start date NOT NULL,
+    definitive_start date NOT NULL,
+    ica_end date NOT NULL,
+    text_link text
+);
+
+
+ALTER TABLE public.tbl_coffee_agreements OWNER TO postgres;
+
+--
+-- TOC entry 3034 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: TABLE tbl_coffee_agreements; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE public.tbl_coffee_agreements IS 'This table contains a list of the different coffee agreements';
+
+
+--
+-- TOC entry 204 (class 1259 OID 24616)
+-- Name: tbl_countries; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbl_countries (
+    id_countries integer NOT NULL,
+    country_name character varying(255) NOT NULL,
+    country_region integer,
+    iso_code character varying(5),
+    eu_membership boolean
+);
+
+
+ALTER TABLE public.tbl_countries OWNER TO postgres;
+
+--
+-- TOC entry 3035 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: TABLE tbl_countries; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE public.tbl_countries IS 'This contains a list of countries that were or are members to at least one ICA';
+
+
+--
+-- TOC entry 200 (class 1259 OID 24586)
+-- Name: tbl_mem_type; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbl_mem_type (
+    idmember integer NOT NULL,
+    mem_type_name character varying(255)
+);
+
+
+ALTER TABLE public.tbl_mem_type OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 24635)
+-- Name: tbl_membership_by_agreements; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbl_membership_by_agreements (
+    id_mem_country integer NOT NULL,
+    agreement_id integer NOT NULL,
+    country_id integer NOT NULL,
+    mem_type_id integer NOT NULL,
+    mem_start date NOT NULL,
+    mem_end date,
+    mem_accept_step integer NOT NULL,
+    note text
+);
+
+
+ALTER TABLE public.tbl_membership_by_agreements OWNER TO postgres;
+
+--
+-- TOC entry 3036 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: TABLE tbl_membership_by_agreements; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE public.tbl_membership_by_agreements IS 'This table contains information about which countries belong to which agreements.';
+
+
+--
+-- TOC entry 201 (class 1259 OID 24591)
+-- Name: tbl_regions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbl_regions (
+    idcountry_region integer NOT NULL,
+    region_name character varying(250) NOT NULL
+);
+
+
+ALTER TABLE public.tbl_regions OWNER TO postgres;
+
+--
+-- TOC entry 3037 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: TABLE tbl_regions; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE public.tbl_regions IS 'This table contains the list of allowable regions into which countries can be grouped';
+
+
+--
+-- TOC entry 3024 (class 0 OID 24603)
+-- Dependencies: 202
+-- Data for Name: tbl_accept_type; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbl_accept_type (id_accept_type, name_acceptance) FROM stdin;
+6	Notification containing an undertaking to apply provisionally and to seek approval, ratification or accession in accordance with constitutional procedure
+1	Acceptance
+2	Accession
+3	Approval
+4	Definitive Acceptance
+5	Definitive Signature
+7	Provisional
+8	Notification containing an undertaking to apply provisionally and to seek formal notification of Acceptance
+9	Ratification
+\.
+
+
+--
+-- TOC entry 3025 (class 0 OID 24608)
+-- Dependencies: 203
+-- Data for Name: tbl_coffee_agreements; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbl_coffee_agreements (id_agreements, ica_name, provisional_start, definitive_start, ica_end, text_link) FROM stdin;
+1	ICA-1962	1963-07-01	1963-12-27	1968-09-30	\N
+2	ICA-1968	1968-10-01	1968-12-30	1976-09-30	\N
+3	ICA-1976	1976-10-01	1977-08-01	1983-09-30	\N
+4	ICA-1983	1983-10-01	1985-09-11	1994-09-30	\N
+5	ICA-1994	1994-10-01	1995-05-19	2001-09-30	\N
+6	ICA-2001	2001-10-01	2005-05-17	2011-02-01	\N
+7	ICA-2007	2011-02-02	2011-02-02	2020-09-23	http://www.ico.org/documents/ica2007e.pdf
+\.
+
+
+--
+-- TOC entry 3026 (class 0 OID 24616)
+-- Dependencies: 204
+-- Data for Name: tbl_countries; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbl_countries (id_countries, country_name, country_region, iso_code, eu_membership) FROM stdin;
+1	Bolivia (Plurinational State of)	7	BO\r	\N
+2	Brazil	7	BR\r	\N
+3	Colombia	7	CO\r	\N
+4	Democratic Republic of Congo	1	CD\r	\N
+5	Costa Rica	4	CR\r	\N
+6	Cuba	4	CU\r	\N
+7	Dominican Republic	4	DO\r	\N
+8	Ecuador	7	EC\r	\N
+9	El Salvador	4	SV\r	\N
+10	Ethiopia	1	ET\r	\N
+11	Guatemala	4	GT\r	\N
+12	Haiti	4	HT\r	\N
+13	Honduras	4	HN\r	\N
+14	India	2	IN\r	\N
+15	Indonesia	2	ID\r	\N
+16	Mexico	4	MX\r	\N
+17	Nicaragua	4	NI\r	\N
+18	Nigeria	1	NG\r	\N
+19	Cameroon	1	CM\r	\N
+20	Central African Republic	1	CF\r	\N
+21	Congo	1	CG\r	\N
+22	Benin	1	BJ\r	\N
+23	Gabon	1	GA\r	\N
+24	Cote d'Ivoire	1	CI\r	\N
+25	Madagascar	1	MG\r	\N
+26	Togo	1	TG\r	\N
+27	Burundi	1	BI\r	\N
+28	Rwanda	1	RW\r	\N
+29	Panama	4	PA\r	\N
+30	Peru	7	PE\r	\N
+32	Sierra Leone	1	SL\r	\N
+33	Tanzania	1	TZ\r	\N
+34	Trinidad & Tobago	4	TT\r	\N
+35	Uganda	1	UG\r	\N
+36	Venezuela	7	VE\r	\N
+37	Kenya	1	KE\r	\N
+38	Ghana	1	GH\r	\N
+39	Zimbabwe	1	ZW\r	\N
+45	Eritrea	1	ER\r	\N
+49	Guyana	7	GY\r	\N
+50	Argentina	7	AR\r	\N
+51	Australia	2	AU\r	\N
+54	Canada	6	CA\r	\N
+55	Chile	7	CL\r	\N
+60	Japan	2	JP\r	\N
+62	Norway	5	NO\r	\N
+65	Switzerland	5	CH\r	\N
+66	Tunisia	1	TN\r	\N
+67	USSR	5	SU\r	\N
+68	United Kingdom	5	GB\r	\N
+70	New Zealand	2	NZ\r	\N
+73	Afghanistan	2	AF	\N
+74	Albania	5	AL	\N
+75	Algeria	1	DZ	\N
+76	Bahrain	2	BH\r	\N
+77	Lesotho	1	LS\r	\N
+78	Botswana	1	BW\r	\N
+80	Myanmar	2	MM\r	\N
+81	Belarus	5	BY\r	\N
+82	Cambodia	2	KH\r	\N
+83	Sri Lanka	2	LK\r	\N
+84	Chad	1	TD\r	\N
+85	China (Mainland)	2	CN\r	\N
+89	Taiwan	2	TW\r	\N
+90	Gibraltar	5	GI\r	\N
+92	Guinea	1	GN\r	\N
+93	Hong Kong	2	HK\r	\N
+95	Iceland	5	IS\r	\N
+96	Iran (Islamic Republic of)	2	IR\r	\N
+97	Iraq	2	IQ\r	\N
+99	Israel	2	IL\r	\N
+100	Jamaica	4	JM\r	\N
+101	Jordan	2	JO\r	\N
+102	Democratic People's Republic of Korea	2	KP\r	\N
+103	Republic of Korea	2	KR\r	\N
+104	Kuwait	2	KW\r	\N
+105	Lao People's Democratic Republic	2	LA\r	\N
+106	Lebanon	2	LB\r	\N
+107	Liberia	1	LR\r	\N
+108	Libya	1	LY\r	\N
+109	Malawi	1	MW\r	\N
+110	Malaysia	2	MY\r	\N
+111	Mali	1	ML\r	\N
+113	Mauritania	1	MR\r	\N
+114	Mongolia	2	MN\r	\N
+115	Morocco	1	MA\r	\N
+116	Oman	2	OM\r	\N
+117	Nepal	2	NP\r	\N
+118	Vanuatu	2	VU\r	\N
+119	Niger	1	NE\r	\N
+120	United Arab Emirates	2	AE\r	\N
+121	Pakistan	2	PK\r	\N
+122	Paraguay	7	PY\r	\N
+123	Philippines	2	PH\r	\N
+125	Puerto Rico	3	PR\r	\N
+126	Qatar	2	QA\r	\N
+127	Russian Federation	5	RU\r	\N
+129	Saint Pierre and Miquelon	6	PM\r	\N
+130	Saudi Arabia	2	SA\r	\N
+131	Senegal	1	SN\r	\N
+132	Singapore	2	SG\r	\N
+133	Somalia	1	SO\r	\N
+134	South Africa	1	ZA\r	\N
+135	Namibia	1	NA\r	\N
+136	Sudan	1	SD\r	\N
+137	Eswatini	1	SZ\r	\N
+138	Syrian Arab Republic	2	SY\r	\N
+139	Suriname	7	SR\r	\N
+140	Thailand	2	TH\r	\N
+141	Turkey	2	TR\r	\N
+142	Egypt	1	EG\r	\N
+143	Burkina Faso	1	BF\r	\N
+144	Uruguay	7	UY\r	\N
+145	Viet Nam	2	VN\r	\N
+146	Yemen	2	YE\r	\N
+149	Zambia	1	ZM\r	\N
+155	Western Sahara	1	EH\r	\N
+158	Angola	1	AO	\N
+159	Timor-Leste	2	TL\r	\N
+160	Mozambique	1	MZ\r	\N
+161	Sao Tome and Principe	1	ST\r	\N
+162	Cabo Verde	1	CV\r	\N
+163	Guinea-Bissau	1	GW\r	\N
+164	Macao	2	MO\r	\N
+166	Papua New Guinea	2	PG\r	\N
+167	Equatorial Guinea	1	GQ\r	\N
+168	French Guiana	7	GF\r	\N
+169	Guadeloupe	3	GP\r	\N
+170	Martinique	3	MQ\r	\N
+171	Reunion	1	RE\r	\N
+172	Comoros	1	KM\r	\N
+173	New Caledonia	2	NC\r	\N
+175	Djibouti	1	DJ\r	\N
+176	Cook Islands	2	CK\r	\N
+177	Niue	2	NU\r	\N
+178	Tokelau	2	TK\r	\N
+179	Ukraine	5	UA\r	\N
+180	South Sudan	1	SS\r	\N
+182	Marshall Islands	2	MH\r	\N
+183	Micronesia (Federated States of)	2	FM\r	\N
+186	Tuvalu	2	TV\r	\N
+190	Bonaire (Sint Eustatius and Saba)	4	BQ\r	\N
+191	Curacao	4	CW\r	\N
+192	State of Palestine	2	PS\r	\N
+194	Samoa	2	WS\r	\N
+195	Belize	4	BZ\r	\N
+196	Gambia	1	GM\r	\N
+197	Aruba	3	AW\r	\N
+198	Pitcairn	2	PN\r	\N
+199	Liechtenstein	5	LI\r	\N
+201	Faroe Islands	5	FO\r	\N
+202	Greenland	6	GL\r	\N
+203	Andorra	5	AD\r	\N
+204	Northern Mariana Islands	2	MP\r	\N
+205	Monaco	5	MC\r	\N
+206	San Marino	5	SM\r	\N
+207	Holy See	5	VA\r	\N
+208	Mauritius	1	MU\r	\N
+209	Saint Helena	1	SH\r	\N
+210	Seychelles	1	SC\r	\N
+211	Georgia	5	GE\r	\N
+212	Bhutan	2	BT\r	\N
+213	Brunei Darussalam	2	BN\r	\N
+214	Maldives	2	MV\r	\N
+216	Bahamas	3	BS\r	\N
+217	Barbados	3	BB\r	\N
+218	Cayman Islands	3	KY\r	\N
+220	Falkland Islands (Malvinas)	7	FK\r	\N
+221	Anguilla	3	AI\r	\N
+222	Antigua and Barbuda	3	AG\r	\N
+223	Cocos (Keeling) Islands	2	CC\r	\N
+224	Montserrat	3	MS\r	\N
+225	Svalbard and Jan Mayen Islands	5	SJ\r	\N
+226	Saint Kitts and Nevis	3	KN\r	\N
+227	British Virgin Islands	3	VG\r	\N
+228	United States Virgin Islands	3	VI\r	\N
+229	Turks & Caicos Islands	3	TC\r	\N
+230	Dominica	3	DM\r	\N
+231	Grenada	3	GD\r	\N
+232	Saint Lucia	3	LC\r	\N
+233	Saint Vincent & the Grenadines	3	VC\r	\N
+234	American_Samoa	2	AS	\N
+235	Christmas Islands	2	CX\r	\N
+236	Fiji	2	FJ\r	\N
+237	Kiribati	2	KI\r	\N
+238	Guam	2	GU\r	\N
+239	Nauru	2	NR\r	\N
+240	Norfolk Island	2	NF\r	\N
+242	Solomon Islands	2	SB\r	\N
+243	Tonga	2	TO\r	\N
+244	Palau	2	PW\r	\N
+245	Wallis & Futuna Islands	2	WF\r	\N
+246	Bermuda	4	BM\r	\N
+252	Mayotte	2	YT\r	\N
+254	Bangladesh	2	BD\r	\N
+265	Republic of Moldova	5	MD\r	\N
+266	Armenia	2	AM\r	\N
+276	Azerbaijan	2	AZ\r	\N
+279	Kazakhstan	2	KZ\r	\N
+282	Uzbekistan	2	UZ\r	\N
+283	Kyrgyzstan	2	KG\r	\N
+285	Tajikistan	2	TJ\r	\N
+286	Turkmenistan	2	TM\r	\N
+287	Bosnia and Herzegovina	5	BA\r	\N
+289	North Macedonia	5	MK\r	\N
+290	Montenegro	5	ME\r	\N
+291	Serbia	5	RS\r	\N
+297	Melilla	1	XL\r	\N
+298	Kosovo (Rep. of)	5	XK\r	\N
+369	United States of America	6	US\r	\N
+31	Portugal	5	PT\r	t
+40	Germany	5	DE\r	t
+41	Estonia	5	EE\r	t
+42	Latvia	5	LV\r	t
+44	Lithuania	5	LT\r	t
+46	Belgium	5	BE\r	t
+52	Austria	5	AT\r	t
+56	Denmark	5	DK\r	t
+58	France	5	FR\r	t
+59	Italy	5	IT\r	t
+61	Netherlands	5	NL\r	t
+63	Spain	5	ES\r	t
+64	Sweden	5	SE\r	t
+71	Finland	5	FI\r	t
+79	Bulgaria	5	BG\r	t
+86	Cyprus	5	CY\r	t
+91	Greece	5	GR\r	t
+94	Hungary	5	HU\r	t
+98	Ireland	5	IE\r	t
+112	Malta	5	MT\r	t
+124	Poland	5	PL\r	t
+128	Romania	5	RO\r	t
+250	European Union	5	QV\r	t
+251	Luxembourg	5	LU\r	t
+288	Croatia	5	HR\r	t
+292	Slovenia	5	SI\r	t
+299	Czechia	5	CZ\r	t
+300	Slovakia	5	SK\r	t
+\.
+
+
+--
+-- TOC entry 3022 (class 0 OID 24586)
+-- Dependencies: 200
+-- Data for Name: tbl_mem_type; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbl_mem_type (idmember, mem_type_name) FROM stdin;
+1	exporter
+2	importer
+\.
+
+
+--
+-- TOC entry 3027 (class 0 OID 24635)
+-- Dependencies: 205
+-- Data for Name: tbl_membership_by_agreements; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbl_membership_by_agreements (id_mem_country, agreement_id, country_id, mem_type_id, mem_start, mem_end, mem_accept_step, note) FROM stdin;
+1	1	22	1	1963-08-06	\N	2	'Before November 1975 the People's Republic of Benin was known as Dahomey'
+2	1	1	1	1967-10-24	\N	1	\N
+3	1	2	1	1963-10-16	\N	9	\N
+4	1	27	1	1962-12-04	\N	9	\N
+5	1	19	1	1963-05-24	\N	9	\N
+6	1	20	1	1963-12-31	\N	9	\N
+7	1	3	1	1963-05-24	\N	9	\N
+8	1	5	1	1963-11-23	\N	9	\N
+9	1	24	1	1963-05-06	\N	9	'Changed its name to Côte d'Ivoire as of 1 January 1986 (U.N. Memo of 12/12/85).'
+10	1	6	1	1963-08-21	\N	9	\N
+11	1	7	1	1963-05-08	\N	9	\N
+12	1	8	1	1963-12-30	\N	9	\N
+13	1	9	1	1963-05-17	\N	9	\N
+14	1	10	1	1964-12-02	\N	2	\N
+15	1	23	1	1962-11-14	\N	9	\N
+16	1	38	1	1964-09-09	\N	2	\N
+17	1	11	1	1963-06-05	\N	9	\N
+18	1	92	1	1968-01-31	\N	2	\N
+19	1	12	1	1965-08-02	\N	2	\N
+20	1	13	1	1967-01-20	\N	2	\N
+21	1	14	1	1963-11-19	\N	9	\N
+22	1	15	1	1963-12-31	\N	1	\N
+23	1	100	1	1967-05-03	\N	2	\N
+24	1	37	1	1966-12-15	\N	2	\N
+25	1	107	1	1967-06-22	\N	2	\N
+26	1	25	1	1963-12-26	\N	9	\N
+27	1	16	1	1963-08-01	\N	9	\N
+28	1	17	1	1963-12-31	\N	9	\N
+29	1	18	1	1963-06-21	\N	9	\N
+30	1	29	1	1963-06-04	\N	9	\N
+31	1	122	1	1968-04-29	\N	2	\N
+32	1	30	1	1963-04-04	\N	9	\N
+33	1	28	1	1962-12-10	\N	9	\N
+34	1	32	1	1964-11-27	\N	2	\N
+35	1	33	1	1962-11-27	\N	9	\N
+36	1	26	1	1963-12-31	\N	2	\N
+37	1	34	1	1963-12-31	\N	9	\N
+38	1	35	1	1963-04-16	\N	9	\N
+39	1	36	1	1964-08-27	\N	2	\N
+40	2	22	1	1968-09-12	\N	1	'Before November 1975 the People's Republic of Benin was known as Dahomey.;
+41	2	1	1	1968-12-30	\N	9	\N
+42	2	2	1	1968-10-11	\N	9	\N
+43	2	27	1	1968-09-17	\N	9	\N
+44	2	19	1	1968-10-09	\N	9	\N
+45	2	20	1	1968-12-20	\N	9	\N
+46	2	3	1	1968-09-26	\N	9	\N
+47	2	5	1	1968-12-30	\N	9	\N
+48	2	24	1	1968-09-27	\N	9	'Changed its name to Côte d'Ivoire as of 1 January 1986 (U.N. Memo of 12/12/85).'
+49	2	7	1	1968-09-30	\N	9	\N
+50	2	8	1	1968-12-16	\N	9	\N
+51	2	9	1	1968-12-16	\N	9	\N
+52	2	10	1	1968-12-24	\N	9	\N
+53	2	23	1	1968-09-30	\N	9	\N
+54	2	38	1	1968-12-23	\N	9	\N
+55	2	11	1	1968-09-30	\N	9	\N
+56	2	92	1	1968-12-30	\N	9	\N
+57	2	12	1	1968-09-25	\N	9	\N
+58	2	13	1	1968-12-16	\N	9	\N
+59	2	14	1	1968-12-31	\N	9	\N
+60	2	15	1	1968-09-26	\N	1	\N
+61	2	100	1	1968-09-17	\N	9	\N
+62	2	37	1	1968-12-10	\N	9	\N
+63	2	107	1	1968-06-18	\N	9	\N
+64	2	25	1	1968-08-08	\N	9	\N
+65	2	16	1	1968-12-13	\N	9	\N
+66	2	17	1	1968-09-30	\N	9	\N
+67	2	18	1	1968-06-18	\N	9	\N
+68	2	29	1	1968-12-21	\N	2	\N
+69	2	122	1	1968-10-27	\N	9	\N
+70	2	30	1	1968-10-25	\N	9	\N
+71	2	28	1	1968-12-31	\N	9	\N
+72	2	32	1	1968-12-11	\N	9	\N
+73	2	33	1	1968-10-01	\N	9	\N
+74	2	26	1	1968-11-29	\N	9	\N
+75	2	34	1	1968-07-10	\N	9	\N
+76	2	35	1	1968-10-14	\N	9	\N
+77	2	36	1	1968-12-18	\N	9	\N
+78	3	158	1	1979-10-17	\N	2	'Angola became an independent Member on 11.11.75 (Previously an overseas province of Portugal).'
+79	3	22	1	1982-09-13	\N	9	\N
+80	3	1	1	1976-11-30	\N	9	\N
+81	3	2	1	1976-09-28	\N	9	\N
+82	3	27	1	1976-08-25	\N	9	\N
+83	3	19	1	1977-09-22	\N	9	\N
+84	3	20	1	1976-08-28	\N	9	\N
+85	3	3	1	1977-02-24	\N	9	\N
+86	3	5	1	1977-01-20	\N	9	\N
+87	3	24	1	1977-06-22	\N	9	\N
+88	3	7	1	1976-10-14	\N	9	\N
+89	3	8	1	1976-09-28	\N	9	\N
+90	3	9	1	1976-08-11	\N	9	\N
+91	3	10	1	1976-11-29	\N	9	\N
+92	3	23	1	1977-08-08	\N	9	\N
+93	3	38	1	1976-10-11	\N	9	\N
+94	3	11	1	1976-12-15	\N	9	\N
+95	3	92	1	1976-10-11	\N	9	\N
+96	3	12	1	1977-01-21	\N	9	\N
+97	3	13	1	1976-10-11	\N	9	\N
+98	3	14	1	1976-09-20	\N	9	\N
+99	3	15	1	1976-10-14	\N	9	\N
+100	3	100	1	1976-09-24	\N	9	\N
+101	3	37	1	1977-02-23	\N	9	\N
+102	3	107	1	1978-08-28	\N	9	\N
+103	3	25	1	1976-09-29	\N	2	\N
+104	3	109	1	1978-06-15	\N	2	\N
+105	3	16	1	1977-02-09	\N	9	\N
+106	3	17	1	1976-05-21	\N	9	\N
+107	3	18	1	1976-11-11	\N	9	\N
+108	3	29	1	1976-12-13	\N	9	\N
+109	3	166	1	1976-07-19	\N	9	'Papua New Guinea became a separate Member on 24.06.75 (previously a designated territory of Australia).'
+110	3	122	1	1976-10-11	\N	9	\N
+111	3	30	1	1976-08-31	\N	1	\N
+112	3	123	1	1980-10-14	\N	2	\N
+113	3	28	1	1976-11-23	\N	9	\N
+114	3	32	1	1976-10-06	\N	9	\N
+115	3	83	1	1981-06-24	\N	2	\N
+116	3	33	1	1977-04-04	\N	9	\N
+117	3	140	1	1981-07-07	\N	2	\N
+118	3	26	1	1976-12-08	\N	9	\N
+119	3	34	1	1976-07-02	\N	9	\N
+120	3	35	1	1976-09-21	\N	9	\N
+121	3	36	1	1977-09-27	\N	9	\N
+122	3	39	1	1981-01-22	\N	9	\N
+123	4	158	1	1984-06-28	\N	9	\N
+124	4	22	1	1984-02-29	1992-09-30	9	\N
+125	4	1	1	1984-10-11	\N	9	\N
+126	4	2	1	1985-09-11	\N	9	\N
+127	4	27	1	1984-01-06	\N	9	\N
+128	4	19	1	1983-09-22	\N	9	\N
+129	4	20	1	1983-07-27	\N	9	\N
+130	4	3	1	1983-12-21	\N	9	\N
+131	4	5	1	1983-09-22	\N	9	\N
+132	4	6	1	1985-02-20	\N	2	\N
+133	4	7	1	1983-09-30	\N	9	\N
+134	4	8	1	1983-12-02	\N	9	\N
+135	4	9	1	1983-08-01	\N	9	\N
+136	4	167	1	1983-11-07	\N	2	\N
+137	4	10	1	1983-09-29	\N	9	\N
+138	4	23	1	1983-09-27	\N	2	\N
+139	4	38	1	1983-10-04	\N	9	\N
+140	4	11	1	1983-09-22	\N	9	\N
+141	4	92	1	1983-08-26	\N	2	\N
+142	4	12	1	1984-03-14	\N	9	\N
+143	4	13	1	1983-12-28	\N	9	\N
+144	4	14	1	1983-09-09	\N	9	\N
+145	4	15	1	1983-09-29	\N	9	\N
+146	4	100	1	1984-03-06	\N	9	\N
+147	4	37	1	1984-03-02	\N	9	\N
+148	4	25	1	1983-09-06	\N	9	\N
+149	4	109	1	1983-09-21	\N	9	\N
+150	4	16	1	1984-03-21	\N	9	\N
+151	4	17	1	1983-09-23	\N	9	\N
+152	4	18	1	1984-05-31	\N	2	\N
+153	4	29	1	1984-10-25	\N	9	\N
+154	4	166	1	1983-06-28	\N	9	\N
+155	4	122	1	1984-06-15	\N	9	\N
+156	4	30	1	1983-12-20	\N	9	\N
+157	4	123	1	1984-02-06	\N	9	\N
+158	4	28	1	1983-09-29	\N	9	\N
+159	4	32	1	1983-04-30	\N	2	\N
+160	4	83	1	1983-12-30	\N	9	\N
+161	4	33	1	1983-09-28	\N	9	\N
+162	4	140	1	1983-09-15	\N	9	\N
+163	4	26	1	1984-06-04	\N	9	\N
+164	4	34	1	1983-09-29	\N	9	\N
+165	4	35	1	1983-09-28	\N	9	\N
+166	4	36	1	1984-10-02	\N	9	\N
+167	4	149	1	1985-01-07	\N	9	\N
+168	4	39	1	1984-03-05	\N	9	\N
+169	5	158	1	1995-06-07	\N	1	\N
+170	5	22	1	1999-08-19	\N	1	\N
+171	5	1	1	1995-07-28	\N	9	\N
+172	5	2	1	1995-09-25	\N	9	\N
+173	5	27	1	1995-09-22	\N	1	\N
+174	5	19	1	1996-07-30	\N	2	\N
+175	5	20	1	1996-05-21	\N	3	\N
+176	5	3	1	1996-06-14	\N	9	\N
+177	5	5	1	1996-05-15	\N	9	\N
+178	5	24	1	1994-09-23	\N	9	\N
+179	5	6	1	1995-02-09	\N	9	\N
+180	5	7	1	1996-08-23	\N	9	\N
+181	5	8	1	1994-11-08	\N	9	\N
+182	5	9	1	1995-04-05	\N	9	\N
+183	5	167	1	1995-04-27	\N	2	\N
+184	5	10	1	1995-07-26	\N	9	\N
+185	5	23	1	1995-02-17	\N	2	\N
+186	5	38	1	1997-09-18	\N	9	\N
+187	5	11	1	1996-10-02	\N	9	\N
+188	5	92	1	1995-04-12	\N	1	\N
+189	5	12	1	1996-01-03	\N	2	\N
+190	5	13	1	1996-09-13	\N	9	\N
+191	5	14	1	1994-09-16	\N	9	\N
+192	5	15	1	1995-02-17	\N	9	\N
+193	5	100	1	1994-09-26	\N	9	\N
+194	5	37	1	1994-08-10	\N	9	\N
+195	5	25	1	1998-05-08	\N	9	\N
+196	5	109	1	1994-09-13	\N	9	\N
+197	5	16	1	1996-02-09	\N	2	\N
+198	5	17	1	1997-03-24	\N	2	\N
+199	5	18	1	1995-09-21	\N	2	\N
+200	5	166	1	1995-09-01	\N	1	\N
+201	5	122	1	1998-09-24	\N	9	\N
+202	5	123	1	1996-11-18	\N	2	\N
+203	5	28	1	1995-09-11	\N	2	\N
+204	5	33	1	1995-09-18	\N	9	\N
+205	5	140	1	1995-03-21	\N	2	\N
+206	5	26	1	1995-10-13	\N	1	\N
+207	5	34	1	1994-09-26	1994-03-27	9	\N
+208	5	35	1	1994-09-26	\N	9	\N
+209	5	36	1	1995-08-18	\N	9	\N
+210	5	145	1	1996-10-14	\N	2	\N
+211	5	149	1	1995-03-07	\N	2	\N
+212	5	39	1	1996-06-28	\N	2	\N
+213	6	158	1	2002-01-02	\N	2	\N
+214	6	22	1	2003-03-21	\N	2	\N
+215	6	1	1	2002-05-30	\N	2	\N
+216	6	2	1	2001-09-21	\N	9	\N
+217	6	27	1	2001-09-24	\N	1	\N
+218	6	19	1	2002-05-28	\N	2	\N
+219	6	20	1	2002-12-19	\N	2	\N
+220	6	3	1	2004-02-17	\N	9	\N
+221	6	5	1	2002-09-25	\N	9	\N
+222	6	24	1	2002-01-29	\N	3	\N
+223	6	6	1	2001-12-26	\N	9	\N
+224	6	7	1	2004-03-05	\N	9	\N
+225	6	8	1	2002-02-05	\N	9	\N
+226	6	9	1	2002-01-25	\N	2	\N
+227	6	10	1	2003-04-16	\N	9	\N
+228	6	23	1	2001-09-25	\N	1	\N
+229	6	38	1	2006-05-31	\N	9	\N
+230	6	11	1	2003-02-05	\N	2	\N
+231	6	92	1	2003-05-21	\N	2	\N
+232	6	12	1	2002-09-24	\N	2	\N
+233	6	13	1	2002-09-24	\N	9	\N
+234	6	14	1	2001-09-10	\N	9	\N
+235	6	15	1	2002-08-23	\N	2	\N
+236	6	100	1	2001-11-01	\N	9	\N
+237	6	37	1	2001-11-01	\N	2	\N
+238	6	25	1	2001-09-24	\N	1	\N
+239	6	109	1	2003-02-12	\N	2	\N
+240	6	16	1	2002-07-09	\N	9	\N
+241	6	17	1	2002-12-12	\N	2	\N
+242	6	18	1	2002-02-26	\N	2	\N
+243	6	29	1	2006-07-26	\N	2	\N
+244	6	166	1	2002-01-23	\N	2	\N
+245	6	122	1	2004-03-10	\N	2	\N
+246	6	123	1	2002-05-28	\N	2	\N
+247	6	28	1	2001-09-13	\N	9	\N
+248	6	33	1	2002-10-31	\N	9	\N
+249	6	140	1	2001-09-24	\N	9	\N
+250	6	26	1	2003-05-09	\N	2	\N
+251	6	35	1	2001-10-05	\N	9	\N
+252	6	36	1	2004-07-08	\N	2	\N
+253	6	145	1	2002-05-02	\N	3	\N
+254	6	149	1	2003-03-26	\N	2	\N
+255	6	39	1	2004-06-03	\N	2	\N
+258	7	2	1	2011-02-02	\N	9	\N
+259	7	27	1	2009-09-21	\N	1	\N
+260	7	19	1	2012-09-17	\N	9	\N
+261	7	20	1	2010-08-24	\N	9	\N
+262	7	3	1	2015-07-22	\N	9	\N
+263	7	5	1	2009-12-11	\N	9	\N
+264	7	24	1	2008-10-15	\N	3	\N
+265	7	6	1	2008-12-04	\N	9	\N
+266	7	8	1	2008-09-30	\N	9	\N
+267	7	9	1	2008-12-04	\N	9	\N
+268	7	10	1	2010-07-08	\N	9	\N
+269	7	23	1	2009-02-25	\N	1	\N
+270	7	38	1	2009-08-17	\N	9	\N
+271	7	11	1	2011-03-23	2020-09-30	9	\N
+272	7	13	1	2010-06-07	\N	9	\N
+273	7	14	1	2008-09-22	\N	9	\N
+274	7	15	1	2009-02-05	\N	9	\N
+275	7	37	1	2008-05-22	\N	9	\N
+276	7	107	1	2009-10-06	\N	9	\N
+277	7	25	1	2014-11-26	\N	9	\N
+278	7	109	1	2012-07-18	\N	9	\N
+279	7	16	1	2010-04-08	\N	9	\N
+280	7	117	1	2017-03-17	\N	2	\N
+281	7	17	1	2009-08-12	\N	9	\N
+282	7	29	1	2009-03-12	\N	9	\N
+283	7	166	1	2016-12-16	\N	9	\N
+285	7	30	1	2015-12-14	\N	2	\N
+286	7	123	1	2011-03-29	\N	2	\N
+287	7	28	1	2012-05-17	\N	9	\N
+288	7	32	1	2011-05-05	\N	2	\N
+289	7	33	1	2010-09-21	\N	9	\N
+290	7	140	1	2009-08-04	\N	9	\N
+291	7	159	1	2009-01-05	\N	9	\N
+292	7	26	1	2010-09-21	\N	9	\N
+293	7	35	1	2010-03-01	\N	9	\N
+294	7	36	1	2017-10-12	\N	2	\N
+295	7	145	1	2008-08-28	\N	3	\N
+296	7	146	1	2010-07-14	\N	9	\N
+297	7	149	1	2011-08-03	\N	9	\N
+298	7	39	1	2012-05-24	\N	9	\N
+299	1	50	2	1963-10-15	\N	9	\N
+300	1	51	2	1963-11-11	\N	9	\N
+301	1	52	2	1963-07-05	\N	9	\N
+302	1	46	2	1964-06-20	\N	2	\N
+256	7	158	1	2009-09-22	\N	3	\N
+303	1	54	2	1962-11-20	\N	9	\N
+304	1	55	2	1963-08-16	\N	6	\N
+305	1	86	2	1967-11-02	\N	2	\N
+306	1	56	2	1963-12-27	\N	9	\N
+307	1	71	2	1964-09-18	\N	2	\N
+308	1	58	2	1963-04-04	\N	9	\N
+309	1	40	2	1963-08-13	\N	9	\N
+310	1	99	2	1967-10-11	\N	2	\N
+311	1	59	2	1966-02-18	\N	2	\N
+312	1	60	2	1964-04-06	\N	2	\N
+313	1	251	2	1964-06-20	\N	2	\N
+314	1	61	2	1963-12-30	\N	9	\N
+315	1	70	2	1963-12-23	\N	9	\N
+316	1	62	2	1963-10-30	\N	9	\N
+317	1	63	2	1963-10-18	\N	9	\N
+318	1	64	2	1963-07-01	\N	9	\N
+319	1	65	2	1964-12-17	\N	9	\N
+320	1	66	2	1963-11-18	\N	2	\N
+321	1	68	2	1963-04-25	\N	1	\N
+322	1	369	2	1963-12-27	\N	9	\N
+323	1	67	2	1963-12-31	\N	9	\N
+324	2	51	2	1968-09-26	\N	9	\N
+325	2	52	2	1969-10-01	\N	2	\N
+326	2	46	2	1969-12-31	\N	2	\N
+327	2	54	2	1968-09-21	\N	9	\N
+328	2	86	2	1968-09-26	\N	9	\N
+329	2	56	2	1968-09-27	\N	9	\N
+330	2	71	2	1968-12-30	\N	9	\N
+331	2	58	2	1968-08-19	\N	3	\N
+332	2	40	2	1968-09-11	\N	9	\N
+333	2	99	2	1968-09-26	\N	9	\N
+334	2	59	2	1973-03-21	\N	9	\N
+335	2	60	2	1969-05-28	\N	2	\N
+336	2	251	2	1969-12-31	\N	2	\N
+337	2	61	2	1968-12-30	\N	9	\N
+338	2	70	2	1968-08-07	\N	9	\N
+339	2	62	2	1968-12-23	\N	9	\N
+340	2	63	2	1969-04-28	\N	2	\N
+341	2	64	2	1968-09-30	\N	9	\N
+342	2	65	2	1968-09-30	\N	9	\N
+343	2	68	2	1968-09-27	\N	9	\N
+344	2	369	2	1968-11-01	\N	9	\N
+345	3	51	2	1976-09-30	\N	9	\N
+346	3	52	2	1977-03-31	\N	9	\N
+347	3	54	2	1976-09-17	\N	9	\N
+348	3	86	2	1977-03-28	\N	2	\N
+349	3	56	2	1976-09-17	\N	9	\N
+350	3	71	2	1978-09-14	\N	9	\N
+351	3	58	2	1977-09-01	\N	3	\N
+352	3	40	2	1976-09-29	\N	9	\N
+353	3	91	2	1981-09-15	\N	6	\N
+354	3	94	2	1977-05-23	\N	2	\N
+355	3	98	2	1977-09-23	\N	9	\N
+356	3	99	2	1977-03-29	\N	9	\N
+357	3	59	2	1978-09-18	\N	9	\N
+358	3	60	2	1976-12-10	\N	9	\N
+359	3	61	2	1978-09-06	\N	9	\N
+360	3	70	2	1976-09-27	\N	9	\N
+361	3	62	2	1976-07-01	\N	9	\N
+362	3	31	2	1977-09-25	\N	9	'Portugal changed its category of membership to that of importing Member as a consequence of the decision adopted by the Council on 07.11.75.'
+363	3	132	2	1981-08-28	\N	2	\N
+364	3	63	2	1976-12-09	\N	9	\N
+365	3	64	2	1976-07-07	\N	9	\N
+366	3	65	2	1976-09-27	\N	9	\N
+367	3	68	2	1986-09-19	\N	9	\N
+368	3	369	2	1976-09-24	\N	9	\N
+369	4	51	2	1983-09-30	1990-12-01	2	\N
+370	4	52	2	1984-03-26	\N	9	\N
+371	4	46	2	1984-10-15	\N	9	\N
+372	4	54	2	1983-09-16	1991-09-01	9	\N
+373	4	86	2	1984-01-13	\N	9	\N
+374	4	56	2	1983-09-30	\N	9	\N
+375	4	236	2	1983-09-23	\N	2	\N
+376	4	71	2	1984-05-08	\N	9	\N
+377	4	58	2	1984-11-13	\N	3	\N
+378	4	40	2	1984-07-12	\N	9	\N
+379	4	91	2	1986-09-19	\N	9	\N
+380	4	98	2	1983-07-28	\N	9	\N
+381	4	59	2	1985-04-09	\N	9	\N
+382	4	60	2	1983-06-01	\N	1	\N
+383	4	251	2	1984-10-15	\N	9	\N
+384	4	61	2	1984-09-05	\N	1	\N
+385	4	70	2	1983-09-27	\N	9	\N
+386	4	62	2	1983-06-30	\N	9	\N
+387	4	31	2	1984-03-30	\N	9	\N
+388	4	132	2	1983-08-18	\N	9	\N
+389	4	63	2	1984-02-07	\N	9	\N
+390	4	64	2	1983-09-15	\N	9	\N
+391	4	65	2	1983-12-12	\N	9	\N
+392	4	68	2	1983-12-22	\N	9	\N
+393	4	369	2	1983-09-15	1993-09-01	9	\N
+394	5	52	2	1996-08-28	\N	2	\N
+395	5	46	2	1994-09-19	\N	8	\N
+396	5	86	2	1995-03-22	\N	9	\N
+397	5	56	2	1994-09-19	\N	3	\N
+398	5	71	2	1995-09-26	\N	1	\N
+399	5	58	2	1996-03-29	\N	3	\N
+400	5	40	2	1996-05-02	\N	9	\N
+401	5	91	2	1996-06-11	\N	9	\N
+402	5	98	2	1995-05-19	\N	9	\N
+403	5	59	2	1995-09-19	\N	9	\N
+404	5	60	2	1995-05-18	\N	2	\N
+405	5	251	2	1994-09-19	\N	8	\N
+406	5	61	2	1995-09-22	\N	1	\N
+407	5	62	2	1994-09-26	\N	9	\N
+408	5	31	2	1996-02-08	\N	9	\N
+409	5	63	2	1995-08-04	\N	9	\N
+410	5	64	2	1994-09-19	\N	9	\N
+411	5	65	2	1995-08-23	\N	9	\N
+412	5	68	2	1994-09-23	\N	9	\N
+413	6	52	2	2002-09-23	\N	2	\N
+414	6	46	2	2001-09-25	\N	8	\N
+415	6	79	2	2007-03-15	\N	2	\N
+416	6	86	2	2002-01-23	\N	2	\N
+417	6	56	2	2002-06-05	\N	9	\N
+418	6	58	2	2005-04-25	\N	3	\N
+419	6	40	2	2002-12-20	\N	9	\N
+420	6	91	2	2004-03-04	\N	2	\N
+421	6	98	2	2002-06-11	\N	9	\N
+422	6	59	2	2005-05-17	\N	9	\N
+423	6	60	2	2001-07-11	\N	1	'On 29 September 2009
+424	6	42	2	2006-01-04	\N	2	'Became a State member of the European Union on  1 May 2004.'
+425	6	251	2	2001-09-25	\N	8	\N
+426	6	61	2	2007-05-25	\N	2	\N
+427	6	62	2	2002-05-21	\N	2	\N
+428	6	124	2	2006-09-15	\N	2	\N
+429	6	31	2	2003-05-21	\N	9	\N
+430	6	128	2	2008-03-24	\N	2	\N
+431	6	300	2	2006-06-01	\N	2	'Became a State member of the European Union on  1 May 2004.'
+432	6	63	2	2002-06-07	\N	9	\N
+433	6	64	2	2001-11-19	\N	2	\N
+434	6	65	2	2002-04-30	\N	9	\N
+435	6	68	2	2003-06-02	\N	9	\N
+436	6	369	2	2005-02-03	\N	2	\N
+437	7	52	2	2008-06-17	\N	3	\N
+438	7	46	2	2008-06-17	\N	3	\N
+439	7	79	2	2008-06-17	\N	3	\N
+440	7	288	2	2013-07-01	\N	3	'Became a State member of the European Union on 1 January 2007 and as a consequence procedures for membership of the 2007 Agreement completed.'
+441	7	86	2	2008-06-17	\N	3	\N
+442	7	56	2	2008-06-17	\N	3	\N
+443	7	41	2	2008-06-17	\N	3	'Became a State member of the European Union on  1 May 2004.'
+444	7	71	2	2008-06-17	\N	3	\N
+445	7	58	2	2008-06-17	\N	3	\N
+446	7	40	2	2008-06-17	\N	3	\N
+447	7	91	2	2008-06-17	\N	3	\N
+448	7	94	2	2008-06-17	\N	3	'Became a State member of the European Union on  1 May 2004.'
+449	7	98	2	2008-06-17	\N	3	\N
+450	7	59	2	2008-06-17	\N	3	\N
+451	7	60	2	2015-07-23	\N	2	\N
+452	7	42	2	2008-06-17	\N	3	'Became a State member of the European Union on  1 May 2004.'
+453	7	44	2	2008-06-17	\N	3	'Became a State member of the European Union on  1 May 2004.'
+454	7	251	2	2008-06-17	\N	3	\N
+455	7	112	2	2008-06-17	\N	3	'Became a State member of the European Union on  1 May 2004.'
+456	7	61	2	2008-06-17	\N	3	\N
+457	7	62	2	2010-09-21	\N	9	\N
+458	7	124	2	2008-06-17	\N	3	\N
+459	7	31	2	2008-06-17	\N	3	\N
+460	7	128	2	2008-06-17	\N	3	'Became a State member of the European Union on 1 January 2007 and as a consequence procedures for membership of the 2007 Agreement completed.'
+461	7	127	2	2015-04-24	\N	2	'Became a State member of the European Union on 1 January 2007 and as a consequence procedures for membership of the 2007 Agreement completed.'
+462	7	300	2	2008-06-17	\N	3	'Became a State member of the European Union on  1 May 2004.'
+463	7	292	2	2008-06-17	\N	3	'Became a State member of the European Union on  1 May 2004.'
+464	7	63	2	2008-06-17	\N	3	\N
+465	7	64	2	2008-06-17	\N	3	\N
+466	7	65	2	2009-09-11	\N	9	\N
+467	7	66	2	2010-09-21	\N	9	\N
+468	7	141	2	2011-03-28	2017-02-12	9	\N
+469	7	68	2	2008-06-17	\N	3	\N
+471	3	46	2	1982-09-30	\N	8	'Joined extentions of ICA 1976 under Resolution No. 318.'
+472	3	251	2	1982-09-30	\N	8	'Joined extentions of ICA 1976 under Resolution No. 318.'
+470	7	369	2	2008-08-28	2018-06-27	1	\N
+284	7	122	1	2013-08-21	2019-11-26	9	\N
+257	7	1	1	2014-09-22	\N	9	\N
+473	7	250	2	2008-06-17	\N	3	\N
+474	7	18	1	2021-07-08	\N	5	\N
+475	7	4	1	2014-12-15	\N	9	\N
+\.
+
+
+--
+-- TOC entry 3023 (class 0 OID 24591)
+-- Dependencies: 201
+-- Data for Name: tbl_regions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbl_regions (idcountry_region, region_name) FROM stdin;
+1	Africa
+2	Asia & Oceania
+3	Caribbean
+4	Central America & Mexico
+5	Europe
+6	North America
+7	South America
+\.
+
+
+--
+-- TOC entry 2875 (class 2606 OID 24607)
+-- Name: tbl_accept_type tbl_accept_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbl_accept_type
+    ADD CONSTRAINT tbl_accept_type_pkey PRIMARY KEY (id_accept_type);
+
+
+--
+-- TOC entry 2877 (class 2606 OID 24615)
+-- Name: tbl_coffee_agreements tbl_coffee_agreements_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbl_coffee_agreements
+    ADD CONSTRAINT tbl_coffee_agreements_pkey PRIMARY KEY (id_agreements);
+
+
+--
+-- TOC entry 2880 (class 2606 OID 24620)
+-- Name: tbl_countries tbl_countries_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbl_countries
+    ADD CONSTRAINT tbl_countries_pkey PRIMARY KEY (id_countries);
+
+
+--
+-- TOC entry 2871 (class 2606 OID 24590)
+-- Name: tbl_mem_type tbl_mem_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbl_mem_type
+    ADD CONSTRAINT tbl_mem_type_pkey PRIMARY KEY (idmember);
+
+
+--
+-- TOC entry 2886 (class 2606 OID 24642)
+-- Name: tbl_membership_by_agreements tbl_membership_by_agreements_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbl_membership_by_agreements
+    ADD CONSTRAINT tbl_membership_by_agreements_pkey PRIMARY KEY (id_mem_country);
+
+
+--
+-- TOC entry 2873 (class 2606 OID 24598)
+-- Name: tbl_regions tbl_regions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbl_regions
+    ADD CONSTRAINT tbl_regions_pkey PRIMARY KEY (idcountry_region);
+
+
+--
+-- TOC entry 2881 (class 1259 OID 24667)
+-- Name: fki_fk_accept_step; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_fk_accept_step ON public.tbl_membership_by_agreements USING btree (mem_accept_step);
+
+
+--
+-- TOC entry 2882 (class 1259 OID 24649)
+-- Name: fki_fk_agreement; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_fk_agreement ON public.tbl_membership_by_agreements USING btree (agreement_id);
+
+
+--
+-- TOC entry 2883 (class 1259 OID 24655)
+-- Name: fki_fk_country; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_fk_country ON public.tbl_membership_by_agreements USING btree (country_id);
+
+
+--
+-- TOC entry 2878 (class 1259 OID 24626)
+-- Name: fki_fk_country_region; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_fk_country_region ON public.tbl_countries USING btree (country_region);
+
+
+--
+-- TOC entry 2884 (class 1259 OID 24661)
+-- Name: fki_fk_mem_type; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_fk_mem_type ON public.tbl_membership_by_agreements USING btree (mem_type_id);
+
+
+--
+-- TOC entry 2891 (class 2606 OID 24662)
+-- Name: tbl_membership_by_agreements fk_accept_step; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbl_membership_by_agreements
+    ADD CONSTRAINT fk_accept_step FOREIGN KEY (mem_accept_step) REFERENCES public.tbl_accept_type(id_accept_type) NOT VALID;
+
+
+--
+-- TOC entry 2888 (class 2606 OID 24644)
+-- Name: tbl_membership_by_agreements fk_agreement; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbl_membership_by_agreements
+    ADD CONSTRAINT fk_agreement FOREIGN KEY (agreement_id) REFERENCES public.tbl_coffee_agreements(id_agreements) NOT VALID;
+
+
+--
+-- TOC entry 2889 (class 2606 OID 24650)
+-- Name: tbl_membership_by_agreements fk_country; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbl_membership_by_agreements
+    ADD CONSTRAINT fk_country FOREIGN KEY (country_id) REFERENCES public.tbl_countries(id_countries) NOT VALID;
+
+
+--
+-- TOC entry 2887 (class 2606 OID 24621)
+-- Name: tbl_countries fk_country_region; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbl_countries
+    ADD CONSTRAINT fk_country_region FOREIGN KEY (country_region) REFERENCES public.tbl_regions(idcountry_region) NOT VALID;
+
+
+--
+-- TOC entry 3038 (class 0 OID 0)
+-- Dependencies: 2887
+-- Name: CONSTRAINT fk_country_region ON tbl_countries; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON CONSTRAINT fk_country_region ON public.tbl_countries IS 'This links the countries regional group to the names in the tbl_regions';
+
+
+--
+-- TOC entry 2890 (class 2606 OID 24656)
+-- Name: tbl_membership_by_agreements fk_mem_type; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbl_membership_by_agreements
+    ADD CONSTRAINT fk_mem_type FOREIGN KEY (mem_type_id) REFERENCES public.tbl_mem_type(idmember) NOT VALID;
+
+
+-- Completed on 2022-01-24 13:04:35
+
+--
+-- PostgreSQL database dump complete
+--
+
