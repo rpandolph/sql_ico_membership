@@ -1,1 +1,5 @@
-This directory contain the scripts that were run to update the database for new data or fixes to old data. 
+This directory contain the scripts to update the database after its initial creation. The following updates were made:
+-Add or remove membership end dates for the most recent agreement (ICA 2007) as of September 30, 2021.
+-Add information to the countries table on whether a country is a member of EU as well as to add EU as a single member. 
+-Add supply, demand, trade information from USA psd downloadable datasets
+
