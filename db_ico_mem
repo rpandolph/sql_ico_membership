@@ -200,245 +200,245 @@ COPY public.tbl_coffee_agreements (id_agreements, ica_name, provisional_start, d
 -- Data for Name: tbl_countries; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.tbl_countries (id_countries, country_name, country_region, iso_code, eu_membership) FROM stdin;
-1	Bolivia (Plurinational State of)	7	BO\r	\N
-2	Brazil	7	BR\r	\N
-3	Colombia	7	CO\r	\N
-4	Democratic Republic of Congo	1	CD\r	\N
-5	Costa Rica	4	CR\r	\N
-6	Cuba	4	CU\r	\N
-7	Dominican Republic	4	DO\r	\N
-8	Ecuador	7	EC\r	\N
-9	El Salvador	4	SV\r	\N
-10	Ethiopia	1	ET\r	\N
-11	Guatemala	4	GT\r	\N
-12	Haiti	4	HT\r	\N
-13	Honduras	4	HN\r	\N
-14	India	2	IN\r	\N
-15	Indonesia	2	ID\r	\N
-16	Mexico	4	MX\r	\N
-17	Nicaragua	4	NI\r	\N
-18	Nigeria	1	NG\r	\N
-19	Cameroon	1	CM\r	\N
-20	Central African Republic	1	CF\r	\N
-21	Congo	1	CG\r	\N
-22	Benin	1	BJ\r	\N
-23	Gabon	1	GA\r	\N
-24	Cote d'Ivoire	1	CI\r	\N
-25	Madagascar	1	MG\r	\N
-26	Togo	1	TG\r	\N
-27	Burundi	1	BI\r	\N
-28	Rwanda	1	RW\r	\N
-29	Panama	4	PA\r	\N
-30	Peru	7	PE\r	\N
-32	Sierra Leone	1	SL\r	\N
-33	Tanzania	1	TZ\r	\N
-34	Trinidad & Tobago	4	TT\r	\N
-35	Uganda	1	UG\r	\N
-36	Venezuela	7	VE\r	\N
-37	Kenya	1	KE\r	\N
-38	Ghana	1	GH\r	\N
-39	Zimbabwe	1	ZW\r	\N
-45	Eritrea	1	ER\r	\N
-49	Guyana	7	GY\r	\N
-50	Argentina	7	AR\r	\N
-51	Australia	2	AU\r	\N
-54	Canada	6	CA\r	\N
-55	Chile	7	CL\r	\N
-60	Japan	2	JP\r	\N
-62	Norway	5	NO\r	\N
-65	Switzerland	5	CH\r	\N
-66	Tunisia	1	TN\r	\N
-67	USSR	5	SU\r	\N
-68	United Kingdom	5	GB\r	\N
-70	New Zealand	2	NZ\r	\N
-73	Afghanistan	2	AF	\N
-74	Albania	5	AL	\N
-75	Algeria	1	DZ	\N
-76	Bahrain	2	BH\r	\N
-77	Lesotho	1	LS\r	\N
-78	Botswana	1	BW\r	\N
-80	Myanmar	2	MM\r	\N
-81	Belarus	5	BY\r	\N
-82	Cambodia	2	KH\r	\N
-83	Sri Lanka	2	LK\r	\N
-84	Chad	1	TD\r	\N
-85	China (Mainland)	2	CN\r	\N
-89	Taiwan	2	TW\r	\N
-90	Gibraltar	5	GI\r	\N
-92	Guinea	1	GN\r	\N
-93	Hong Kong	2	HK\r	\N
-95	Iceland	5	IS\r	\N
-96	Iran (Islamic Republic of)	2	IR\r	\N
-97	Iraq	2	IQ\r	\N
-99	Israel	2	IL\r	\N
-100	Jamaica	4	JM\r	\N
-101	Jordan	2	JO\r	\N
-102	Democratic People's Republic of Korea	2	KP\r	\N
-103	Republic of Korea	2	KR\r	\N
-104	Kuwait	2	KW\r	\N
-105	Lao People's Democratic Republic	2	LA\r	\N
-106	Lebanon	2	LB\r	\N
-107	Liberia	1	LR\r	\N
-108	Libya	1	LY\r	\N
-109	Malawi	1	MW\r	\N
-110	Malaysia	2	MY\r	\N
-111	Mali	1	ML\r	\N
-113	Mauritania	1	MR\r	\N
-114	Mongolia	2	MN\r	\N
-115	Morocco	1	MA\r	\N
-116	Oman	2	OM\r	\N
-117	Nepal	2	NP\r	\N
-118	Vanuatu	2	VU\r	\N
-119	Niger	1	NE\r	\N
-120	United Arab Emirates	2	AE\r	\N
-121	Pakistan	2	PK\r	\N
-122	Paraguay	7	PY\r	\N
-123	Philippines	2	PH\r	\N
-125	Puerto Rico	3	PR\r	\N
-126	Qatar	2	QA\r	\N
-127	Russian Federation	5	RU\r	\N
-129	Saint Pierre and Miquelon	6	PM\r	\N
-130	Saudi Arabia	2	SA\r	\N
-131	Senegal	1	SN\r	\N
-132	Singapore	2	SG\r	\N
-133	Somalia	1	SO\r	\N
-134	South Africa	1	ZA\r	\N
-135	Namibia	1	NA\r	\N
-136	Sudan	1	SD\r	\N
-137	Eswatini	1	SZ\r	\N
-138	Syrian Arab Republic	2	SY\r	\N
-139	Suriname	7	SR\r	\N
-140	Thailand	2	TH\r	\N
-141	Turkey	2	TR\r	\N
-142	Egypt	1	EG\r	\N
-143	Burkina Faso	1	BF\r	\N
-144	Uruguay	7	UY\r	\N
-145	Viet Nam	2	VN\r	\N
-146	Yemen	2	YE\r	\N
-149	Zambia	1	ZM\r	\N
-155	Western Sahara	1	EH\r	\N
-158	Angola	1	AO	\N
-159	Timor-Leste	2	TL\r	\N
-160	Mozambique	1	MZ\r	\N
-161	Sao Tome and Principe	1	ST\r	\N
-162	Cabo Verde	1	CV\r	\N
-163	Guinea-Bissau	1	GW\r	\N
-164	Macao	2	MO\r	\N
-166	Papua New Guinea	2	PG\r	\N
-167	Equatorial Guinea	1	GQ\r	\N
-168	French Guiana	7	GF\r	\N
-169	Guadeloupe	3	GP\r	\N
-170	Martinique	3	MQ\r	\N
-171	Reunion	1	RE\r	\N
-172	Comoros	1	KM\r	\N
-173	New Caledonia	2	NC\r	\N
-175	Djibouti	1	DJ\r	\N
-176	Cook Islands	2	CK\r	\N
-177	Niue	2	NU\r	\N
-178	Tokelau	2	TK\r	\N
-179	Ukraine	5	UA\r	\N
-180	South Sudan	1	SS\r	\N
-182	Marshall Islands	2	MH\r	\N
-183	Micronesia (Federated States of)	2	FM\r	\N
-186	Tuvalu	2	TV\r	\N
-190	Bonaire (Sint Eustatius and Saba)	4	BQ\r	\N
-191	Curacao	4	CW\r	\N
+COPY public.tbl_countries (id_countries, country_name, country_region, iso_code) FROM stdin;
+1	Bolivia (Plurinational State of)	7	BO\r	
+2	Brazil	7	BR\r	
+3	Colombia	7	CO\r	
+4	Democratic Republic of Congo	1	CD\r	
+5	Costa Rica	4	CR\r	
+6	Cuba	4	CU\r	
+7	Dominican Republic	4	DO\r	
+8	Ecuador	7	EC\r	
+9	El Salvador	4	SV\r	
+10	Ethiopia	1	ET\r	
+11	Guatemala	4	GT\r	
+12	Haiti	4	HT\r	
+13	Honduras	4	HN\r	
+14	India	2	IN\r	
+15	Indonesia	2	ID\r	
+16	Mexico	4	MX\r	
+17	Nicaragua	4	NI\r	
+18	Nigeria	1	NG\r	
+19	Cameroon	1	CM\r	
+20	Central African Republic	1	CF\r	
+21	Congo	1	CG\r	
+22	Benin	1	BJ\r	
+23	Gabon	1	GA\r	
+24	Cote d'Ivoire	1	CI\r	
+25	Madagascar	1	MG\r	
+26	Togo	1	TG\r	
+27	Burundi	1	BI\r	
+28	Rwanda	1	RW\r	
+29	Panama	4	PA\r	
+30	Peru	7	PE\r	
+32	Sierra Leone	1	SL\r	
+33	Tanzania	1	TZ\r	
+34	Trinidad & Tobago	4	TT\r	
+35	Uganda	1	UG\r	
+36	Venezuela	7	VE\r	
+37	Kenya	1	KE\r	
+38	Ghana	1	GH\r	
+39	Zimbabwe	1	ZW\r	
+45	Eritrea	1	ER\r	
+49	Guyana	7	GY\r	
+50	Argentina	7	AR\r	
+51	Australia	2	AU\r	
+54	Canada	6	CA\r	
+55	Chile	7	CL\r	
+60	Japan	2	JP\r	
+62	Norway	5	NO\r	
+65	Switzerland	5	CH\r	
+66	Tunisia	1	TN\r	
+67	USSR	5	SU\r	
+68	United Kingdom	5	GB\r	
+70	New Zealand	2	NZ\r	
+73	Afghanistan	2	AF	
+74	Albania	5	AL	
+75	Algeria	1	DZ	
+76	Bahrain	2	BH\r	
+77	Lesotho	1	LS\r	
+78	Botswana	1	BW\r	
+80	Myanmar	2	MM\r	
+81	Belarus	5	BY\r	
+82	Cambodia	2	KH\r	
+83	Sri Lanka	2	LK\r	
+84	Chad	1	TD\r	
+85	China (Mainland)	2	CN\r
+89	Taiwan	2	TW\r	
+90	Gibraltar	5	GI\r	
+92	Guinea	1	GN\r	
+93	Hong Kong	2	HK\r	
+95	Iceland	5	IS\r	
+96	Iran (Islamic Republic of)	2	IR\r	
+97	Iraq	2	IQ\r	
+99	Israel	2	IL\r	
+100	Jamaica	4	JM\r	
+101	Jordan	2	JO\r	
+102	Democratic People's Republic of Korea	2	KP\r	
+103	Republic of Korea	2	KR\r	
+104	Kuwait	2	KW\r	
+105	Lao People's Democratic Republic	2	LA\r	
+106	Lebanon	2	LB\r	
+107	Liberia	1	LR\r	
+108	Libya	1	LY\r	
+109	Malawi	1	MW\r	
+110	Malaysia	2	MY\r	
+111	Mali	1	ML\r	
+113	Mauritania	1	MR\r	
+114	Mongolia	2	MN\r	
+115	Morocco	1	MA\r	
+116	Oman	2	OM\r	
+117	Nepal	2	NP\r	
+118	Vanuatu	2	VU\r	
+119	Niger	1	NE\r	
+120	United Arab Emirates	2	AE\r	
+121	Pakistan	2	PK\r	
+122	Paraguay	7	PY\r	
+123	Philippines	2	PH\r	
+125	Puerto Rico	3	PR\r	
+126	Qatar	2	QA\r	
+127	Russian Federation	5	RU\r	
+129	Saint Pierre and Miquelon	6	PM\r	
+130	Saudi Arabia	2	SA\r	
+131	Senegal	1	SN\r	
+132	Singapore	2	SG\r	
+133	Somalia	1	SO\r	
+134	South Africa	1	ZA\r	
+135	Namibia	1	NA\r	
+136	Sudan	1	SD\r	
+137	Eswatini	1	SZ\r	
+138	Syrian Arab Republic	2	SY\r	
+139	Suriname	7	SR\r	
+140	Thailand	2	TH\r	
+141	Turkey	2	TR\r	
+142	Egypt	1	EG\r	
+143	Burkina Faso	1	BF\r	
+144	Uruguay	7	UY\r	
+145	Viet Nam	2	VN\r	
+146	Yemen	2	YE\r	
+149	Zambia	1	ZM\r	
+155	Western Sahara	1	EH\r	
+158	Angola	1	AO	
+159	Timor-Leste	2	TL\r	
+160	Mozambique	1	MZ\r	
+161	Sao Tome and Principe	1	ST\r	
+162	Cabo Verde	1	CV\r	
+163	Guinea-Bissau	1	GW\r	
+164	Macao	2	MO\r	
+166	Papua New Guinea	2	PG\r	
+167	Equatorial Guinea	1	GQ\r	
+168	French Guiana	7	GF\r	
+169	Guadeloupe	3	GP\r	
+170	Martinique	3	MQ\r	
+171	Reunion	1	RE\r	
+172	Comoros	1	KM\r	
+173	New Caledonia	2	NC\r	
+175	Djibouti	1	DJ\r	
+176	Cook Islands	2	CK\r	
+177	Niue	2	NU\r	
+178	Tokelau	2	TK\r	
+179	Ukraine	5	UA\r	
+180	South Sudan	1	SS\r	
+182	Marshall Islands	2	MH\r	
+183	Micronesia (Federated States of)	2	FM\r	
+186	Tuvalu	2	TV\r	
+190	Bonaire (Sint Eustatius and Saba)	4	BQ\r	
+191	Curacao	4	CW\r	
 192	State of Palestine	2	PS\r	\N
-194	Samoa	2	WS\r	\N
-195	Belize	4	BZ\r	\N
-196	Gambia	1	GM\r	\N
-197	Aruba	3	AW\r	\N
-198	Pitcairn	2	PN\r	\N
-199	Liechtenstein	5	LI\r	\N
-201	Faroe Islands	5	FO\r	\N
-202	Greenland	6	GL\r	\N
-203	Andorra	5	AD\r	\N
-204	Northern Mariana Islands	2	MP\r	\N
-205	Monaco	5	MC\r	\N
-206	San Marino	5	SM\r	\N
-207	Holy See	5	VA\r	\N
-208	Mauritius	1	MU\r	\N
-209	Saint Helena	1	SH\r	\N
-210	Seychelles	1	SC\r	\N
-211	Georgia	5	GE\r	\N
-212	Bhutan	2	BT\r	\N
-213	Brunei Darussalam	2	BN\r	\N
-214	Maldives	2	MV\r	\N
-216	Bahamas	3	BS\r	\N
-217	Barbados	3	BB\r	\N
-218	Cayman Islands	3	KY\r	\N
-220	Falkland Islands (Malvinas)	7	FK\r	\N
-221	Anguilla	3	AI\r	\N
-222	Antigua and Barbuda	3	AG\r	\N
-223	Cocos (Keeling) Islands	2	CC\r	\N
-224	Montserrat	3	MS\r	\N
-225	Svalbard and Jan Mayen Islands	5	SJ\r	\N
-226	Saint Kitts and Nevis	3	KN\r	\N
-227	British Virgin Islands	3	VG\r	\N
-228	United States Virgin Islands	3	VI\r	\N
-229	Turks & Caicos Islands	3	TC\r	\N
-230	Dominica	3	DM\r	\N
-231	Grenada	3	GD\r	\N
-232	Saint Lucia	3	LC\r	\N
-233	Saint Vincent & the Grenadines	3	VC\r	\N
-234	American_Samoa	2	AS	\N
-235	Christmas Islands	2	CX\r	\N
-236	Fiji	2	FJ\r	\N
-237	Kiribati	2	KI\r	\N
-238	Guam	2	GU\r	\N
-239	Nauru	2	NR\r	\N
-240	Norfolk Island	2	NF\r	\N
-242	Solomon Islands	2	SB\r	\N
-243	Tonga	2	TO\r	\N
-244	Palau	2	PW\r	\N
-245	Wallis & Futuna Islands	2	WF\r	\N
-246	Bermuda	4	BM\r	\N
-252	Mayotte	2	YT\r	\N
-254	Bangladesh	2	BD\r	\N
-265	Republic of Moldova	5	MD\r	\N
-266	Armenia	2	AM\r	\N
-276	Azerbaijan	2	AZ\r	\N
-279	Kazakhstan	2	KZ\r	\N
-282	Uzbekistan	2	UZ\r	\N
-283	Kyrgyzstan	2	KG\r	\N
-285	Tajikistan	2	TJ\r	\N
-286	Turkmenistan	2	TM\r	\N
-287	Bosnia and Herzegovina	5	BA\r	\N
-289	North Macedonia	5	MK\r	\N
-290	Montenegro	5	ME\r	\N
-291	Serbia	5	RS\r	\N
-297	Melilla	1	XL\r	\N
-298	Kosovo (Rep. of)	5	XK\r	\N
-369	United States of America	6	US\r	\N
-31	Portugal	5	PT\r	t
-40	Germany	5	DE\r	t
-41	Estonia	5	EE\r	t
-42	Latvia	5	LV\r	t
-44	Lithuania	5	LT\r	t
-46	Belgium	5	BE\r	t
-52	Austria	5	AT\r	t
-56	Denmark	5	DK\r	t
-58	France	5	FR\r	t
-59	Italy	5	IT\r	t
-61	Netherlands	5	NL\r	t
-63	Spain	5	ES\r	t
-64	Sweden	5	SE\r	t
-71	Finland	5	FI\r	t
-79	Bulgaria	5	BG\r	t
-86	Cyprus	5	CY\r	t
-91	Greece	5	GR\r	t
-94	Hungary	5	HU\r	t
-98	Ireland	5	IE\r	t
-112	Malta	5	MT\r	t
-124	Poland	5	PL\r	t
-128	Romania	5	RO\r	t
-250	European Union	5	QV\r	t
-251	Luxembourg	5	LU\r	t
-288	Croatia	5	HR\r	t
-292	Slovenia	5	SI\r	t
-299	Czechia	5	CZ\r	t
-300	Slovakia	5	SK\r	t
+194	Samoa	2	WS\r	
+195	Belize	4	BZ\r	
+196	Gambia	1	GM\r	
+197	Aruba	3	AW\r	
+198	Pitcairn	2	PN\r	
+199	Liechtenstein	5	LI\r	
+201	Faroe Islands	5	FO\r	
+202	Greenland	6	GL\r	
+203	Andorra	5	AD\r	
+204	Northern Mariana Islands	2	MP\r	
+205	Monaco	5	MC\r	
+206	San Marino	5	SM\r	
+207	Holy See	5	VA\r	
+208	Mauritius	1	MU\r	
+209	Saint Helena	1	SH\r	
+210	Seychelles	1	SC\r	
+211	Georgia	5	GE\r	
+212	Bhutan	2	BT\r	
+213	Brunei Darussalam	2	BN\r	
+214	Maldives	2	MV\r	
+216	Bahamas	3	BS\r	
+217	Barbados	3	BB\r	
+218	Cayman Islands	3	KY\r	
+220	Falkland Islands (Malvinas)	7	FK\r	
+221	Anguilla	3	AI\r	
+222	Antigua and Barbuda	3	AG\r	
+223	Cocos (Keeling) Islands	2	CC\r	
+224	Montserrat	3	MS\r	
+225	Svalbard and Jan Mayen Islands	5	SJ\r	
+226	Saint Kitts and Nevis	3	KN\r	
+227	British Virgin Islands	3	VG\r	
+228	United States Virgin Islands	3	VI\r	
+229	Turks & Caicos Islands	3	TC\r	
+230	Dominica	3	DM\r	
+231	Grenada	3	GD\r	
+232	Saint Lucia	3	LC\r	
+233	Saint Vincent & the Grenadines	3	VC\r	
+234	American_Samoa	2	AS	
+235	Christmas Islands	2	CX\r	
+236	Fiji	2	FJ\r	
+237	Kiribati	2	KI\r	
+238	Guam	2	GU\r	
+239	Nauru	2	NR\r	
+240	Norfolk Island	2	NF\r	
+242	Solomon Islands	2	SB\r	
+243	Tonga	2	TO\r	
+244	Palau	2	PW\r	
+245	Wallis & Futuna Islands	2	WF\r	
+246	Bermuda	4	BM\r	
+252	Mayotte	2	YT\r	
+254	Bangladesh	2	BD\r	
+265	Republic of Moldova	5	MD\r	
+266	Armenia	2	AM\r	
+276	Azerbaijan	2	AZ\r	
+279	Kazakhstan	2	KZ\r	
+282	Uzbekistan	2	UZ\r	
+283	Kyrgyzstan	2	KG\r	
+285	Tajikistan	2	TJ\r	
+286	Turkmenistan	2	TM\r	
+287	Bosnia and Herzegovina	5	BA\r	
+289	North Macedonia	5	MK\r	
+290	Montenegro	5	ME\r	
+291	Serbia	5	RS\r	
+297	Melilla	1	XL\r	
+298	Kosovo (Rep. of)	5	XK\r	
+369	United States of America	6	US\r	
+31	Portugal	5	PT\r	
+40	Germany	5	DE\r	
+41	Estonia	5	EE\r	
+42	Latvia	5	LV\r	
+44	Lithuania	5	LT\r	
+46	Belgium	5	BE\r
+52	Austria	5	AT\r	
+56	Denmark	5	DK\r	
+58	France	5	FR\r	
+59	Italy	5	IT\r	
+61	Netherlands	5	NL\r	
+63	Spain	5	ES\r	
+64	Sweden	5	SE\r	
+71	Finland	5	FI\r	
+79	Bulgaria	5	BG\r	
+86	Cyprus	5	CY\r	
+91	Greece	5	GR\r	
+94	Hungary	5	HU\r	
+98	Ireland	5	IE\r	
+112	Malta	5	MT\r	
+124	Poland	5	PL\r	
+128	Romania	5	RO\r	
+250	European Union	5	QV\r	
+251	Luxembourg	5	LU\r	
+288	Croatia	5	HR\r	
+292	Slovenia	5	SI\r	
+299	Czechia	5	CZ\r	
+300	Slovakia	5	SK\r	
 \.
 
 
@@ -760,7 +760,7 @@ COPY public.tbl_membership_by_agreements (id_mem_country, agreement_id, country_
 300	1	51	2	1963-11-11	\N	9	\N
 301	1	52	2	1963-07-05	\N	9	\N
 302	1	46	2	1964-06-20	\N	2	\N
-256	7	158	1	2009-09-22	\N	3	\N
+256	7	158	1	2009-09-22	2019-09-24	3	\N
 303	1	54	2	1962-11-20	\N	9	\N
 304	1	55	2	1963-08-16	\N	6	\N
 305	1	86	2	1967-11-02	\N	2	\N
@@ -930,12 +930,9 @@ COPY public.tbl_membership_by_agreements (id_mem_country, agreement_id, country_
 469	7	68	2	2008-06-17	\N	3	\N
 471	3	46	2	1982-09-30	\N	8	'Joined extentions of ICA 1976 under Resolution No. 318.'
 472	3	251	2	1982-09-30	\N	8	'Joined extentions of ICA 1976 under Resolution No. 318.'
-470	7	369	2	2008-08-28	2018-06-27	1	\N
-284	7	122	1	2013-08-21	2019-11-26	9	\N
-257	7	1	1	2014-09-22	\N	9	\N
-473	7	250	2	2008-06-17	\N	3	\N
-474	7	18	1	2021-07-08	\N	5	\N
-475	7	4	1	2014-12-15	\N	9	\N
+470	7	369	2	2008-08-28	2018-03-29	1	\N
+284	7	122	1	2013-08-21	\N	9	\N
+257	7	1	1	2014-09-22	2019-09-24	9	\N
 \.
 
 
